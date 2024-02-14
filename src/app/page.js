@@ -1,95 +1,95 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+import React, { useState } from "react";
+import './page.module.css'
+import { Box } from "@mui/material";
+
 
 export default function Home() {
+
+  const [pos, setPos] = useState({x: 0, y: 0})
+  const [notClicked, setNotClicked] = useState(false)
+  const [clicked, setClicked] = useState(false)
+
+  const yesClick = () => {
+    setClicked(true)
+  }
+
+  const noClick = () => {
+    setNotClicked(true)
+    const x = Math.floor(Math.random() * (81)) + 10;
+    const y = Math.floor(Math.random() * (81)) + 10;
+    setPos({x, y})
+  }
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="main">
+      {!clicked && <Box style={{display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+        <Box className="title">
+          Will you be my valentine?
+        </Box>
+        <Box className="buttonWrapper">
+          <div className="button" onClick={yesClick}>Yes 😊</div>
+          <div className="button" onClick={noClick} style={notClicked ? {position: "absolute", top: `${pos.y}%`, left: `${pos.x}%`} : {}}>No 😥</div>
+        </Box>
+      </Box> }
+      {clicked && <div>
+        <div style={{position: "absolute", top: '10%', left: `10%`}}>
+          <div className="heart">
+            <p className="message">Happy<br/>Valentine&apos;s</p>
+          </div>
         </div>
-      </div>
+        <div className="flower" style={{position: "absolute", top: '55%', left: `40%`}}>
+          <div className="f-wrapper">
+              <div className="flower__line"></div>
+              <div className="f">
+                  <div className="flower__leaf flower__leaf--1"></div>
+                  <div className="flower__leaf flower__leaf--2"></div>
+                  <div className="flower__leaf flower__leaf--3"></div>
+                  <div className="flower__leaf flower__leaf--4"></div>
+                  <div className="flower__leaf flower__leaf--5"></div>
+                  <div className="flower__leaf flower__leaf--6"></div>
+                  <div className="flower__leaf flower__leaf--7"></div>
+                  <div className="flower__leaf flower__leaf--8 flower__fall-down--yellow"></div>
+              </div>
+          </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+          <div className="f-wrapper f-wrapper--2">
+              <div className="flower__line"></div>
+              <div className="f">
+                  <div className="flower__leaf flower__leaf--1"></div>
+                  <div className="flower__leaf flower__leaf--2"></div>
+                  <div className="flower__leaf flower__leaf--3"></div>
+                  <div className="flower__leaf flower__leaf--4"></div>
+                  <div className="flower__leaf flower__leaf--5"></div>
+                  <div className="flower__leaf flower__leaf--6"></div>
+                  <div className="flower__leaf flower__leaf--7"></div>
+                  <div className="flower__leaf flower__leaf--8 flower__fall-down--pink"></div>
+              </div>
+          </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+          <div className="f-wrapper f-wrapper--3">
+              <div className="flower__line"></div>
+              <div className="f">
+                  <div className="flower__leaf flower__leaf--1"></div>
+                  <div className="flower__leaf flower__leaf--2"></div>
+                  <div className="flower__leaf flower__leaf--3"></div>
+                  <div className="flower__leaf flower__leaf--4"></div>
+                  <div className="flower__leaf flower__leaf--5"></div>
+                  <div className="flower__leaf flower__leaf--6"></div>
+                  <div className="flower__leaf flower__leaf--7"></div>
+                  <div className="flower__leaf flower__leaf--8 flower__fall-down--purple"></div>
+              </div>
+          </div>
+          <div className="flower__glass"></div>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12 text-center">
+              <h3 className="animate-charcter"> Happy<br/>Valentine&apos;s<br/>Day<br/>Sasha💋</h3>
+            </div>
+          </div>
+        </div>
+      </div>}
     </main>
   );
 }
